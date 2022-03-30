@@ -1,0 +1,57 @@
+﻿@page "/BikeStore"
+
+<PageTitle>Orders</PageTitle>
+
+@using BlazorApp.Data
+@inject BikeStoreService BikeStoreService
+
+<h1>Orders from Last 7 Days</h1>
+
+<p>This component demonstrates fetching data from our Bike Store Database.</p>
+
+@if (orders == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>Order Date</th>
+            <th>Customer Id</th>
+            <th>Customer Name</th>
+            <th>Store Name</th>
+            <th>Store City</th>
+            <th>Sold By</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var order in orders)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderDate.ToString("dd-MMM-yyyy")</td>
+                <td>@order.CustomerId</td>
+                <td>@order.CustomerName</td>
+                <td>@order.StoreName</td>
+                <td>@order.StoreCity</td>
+                <td>@order.Staff</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private OrderDetails[]? orders;
+
+    protected override async Task OnInitializedAsync()
+    {
+        orders = await BikeStoreService.GetOrdersAsync();
+    }
+
+}

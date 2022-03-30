@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+
+  Scheduler:
+    image: scheduler:1.0.0
+    build:
+      context: ../Src/DevelopingDotnetWithDocker/
+      dockerfile: ./Scheduler/Dockerfile
+    depends_on:
+      - MyDevSqlServer
+    entrypoint: ["/app/wait-for-it.sh", "MyDevSqlServer:1433", "-t", "120", "--", "dotnet", "Scheduler.dll"]
+  
+  MyDevSqlServer:
+    image: bikestore:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "51433:1433"
+
+    volumes:
+      - mssqldata:/var/opt/mssql
+
+volumes:
+  mssqldata:
