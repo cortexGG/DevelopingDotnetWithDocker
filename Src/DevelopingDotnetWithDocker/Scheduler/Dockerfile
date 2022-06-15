@@ -18,3 +18,4 @@ COPY --from=publish /app/publish .
 RUN chmod +x wait-for-it.sh
 
 ENTRYPOINT ["dotnet", "Scheduler.dll"]
+

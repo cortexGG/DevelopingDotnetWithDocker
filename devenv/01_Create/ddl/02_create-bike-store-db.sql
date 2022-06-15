@@ -1,3 +1,4 @@
+-- noinspection SqlNoDataSourceInspectionForFile
 
 -- create schemas
 CREATE SCHEMA production;

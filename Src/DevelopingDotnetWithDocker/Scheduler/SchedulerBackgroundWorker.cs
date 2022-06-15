@@ -44,13 +44,13 @@ namespace Scheduler
                         "insert into sales.orders (customer_id, order_status, order_date, required_date, shipped_date, store_id, staff_id)" +
                         $"values ({rnd.Next(1,2890)}, 2, '{DateTime.Today.ToString("yyyy-MM-dd")}', '{DateTime.Today.ToString("yyyy-MM-dd")}', null, {rnd.Next(1,6)}, {rnd.Next(1,10)});",
                         commandType: CommandType.Text);
+                    
+                    await Task.Delay(_waitTime, stoppingToken);
                 }
                 catch (Exception e)
                 {
-                    await Console.Error.WriteLineAsync($"Ah plums, something went wrong: {e.Message}");
+                    // await Console.Error.WriteLineAsync($"Ah plums, something went wrong: {e.Message}");
                 }
-
-                await Task.Delay(_waitTime, stoppingToken);
             }
         }
 

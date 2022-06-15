@@ -1,4 +1,4 @@
-
+SET NOCOUNT ON;
 SET IDENTITY_INSERT production.brands ON;
 
 INSERT INTO production.brands(brand_id,brand_name) VALUES(1,'Electra')
@@ -11,6 +11,8 @@ INSERT INTO production.brands(brand_id,brand_name) VALUES(7,'Sun Bicycles')
 INSERT INTO production.brands(brand_id,brand_name) VALUES(8,'Surly')
 INSERT INTO production.brands(brand_id,brand_name) VALUES(9,'Trek')
 
+    PRINT 'Brands data loaded'
+
 SET IDENTITY_INSERT production.brands OFF;
 
 SET IDENTITY_INSERT production.categories ON;
@@ -21,6 +23,8 @@ INSERT INTO production.categories(category_id,category_name) VALUES(4,'Cyclocros
 INSERT INTO production.categories(category_id,category_name) VALUES(5,'Electric Bikes')
 INSERT INTO production.categories(category_id,category_name) VALUES(6,'Mountain Bikes')
 INSERT INTO production.categories(category_id,category_name) VALUES(7,'Road Bikes')
+
+    PRINT 'Categories data loaded'
 
 SET IDENTITY_INSERT production.categories OFF;
 
@@ -346,6 +350,8 @@ INSERT INTO production.products(product_id, product_name, brand_id, category_id,
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(319,'Trek Checkpoint SL 5 Women''s - 2019',9,7,2019,2799.99)
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(320,'Trek Checkpoint SL 6 - 2019',9,7,2019,3799.99)
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(321,'Trek Checkpoint ALR Frameset - 2019',9,7,2019,3199.99)
+
+PRINT 'Products data loaded'
 
 SET IDENTITY_INSERT production.products OFF;
 
@@ -1796,12 +1802,16 @@ INSERT INTO sales.customers(first_name, last_name, phone, email, street, city, s
 INSERT INTO sales.customers(first_name, last_name, phone, email, street, city, state, zip_code) VALUES('Ivette','Estes',NULL,'ivette.estes@gmail.com','88 N. Canterbury Ave. ','Canandaigua','NY',14424);
 INSERT INTO sales.customers(first_name, last_name, phone, email, street, city, state, zip_code) VALUES('Ester','Acevedo',NULL,'ester.acevedo@gmail.com','671 Miles Court ','San Lorenzo','CA',94580);
 
+PRINT 'Customer data loaded'
+
 -- stores
 
 INSERT INTO sales.stores(store_name, phone, email, street, city, state, zip_code)
 VALUES('Santa Cruz Bikes','(831) 476-4321','santacruz@bikes.shop','3700 Portola Drive', 'Santa Cruz','CA',95060),
       ('Baldwin Bikes','(516) 379-8888','baldwin@bikes.shop','4200 Chestnut Lane', 'Baldwin','NY',11432),
       ('Rowlett Bikes','(972) 530-5555','rowlett@bikes.shop','8000 Fairway Avenue', 'Rowlett','TX',75088);
+
+PRINT 'Store data loaded'
 
 
 -- production.stocks
@@ -2745,6 +2755,8 @@ INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,311,23);
 INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,312,18);
 INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,313,0);
 
+PRINT 'Stock data loaded'
+
 SET IDENTITY_INSERT sales.staffs ON;
 
 INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, store_id, manager_id) VALUES(1,'Fabiola','Jackson','fabiola.jackson@bikes.shop','(831) 555-5554',1,1,NULL);
@@ -2757,6 +2769,8 @@ INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, 
 INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, store_id, manager_id) VALUES(8,'Kali','Vargas','kali.vargas@bikes.shop','(972) 530-5555',1,3,1);
 INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, store_id, manager_id) VALUES(9,'Layla','Terrell','layla.terrell@bikes.shop','(972) 530-5556',1,3,7);
 INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, store_id, manager_id) VALUES(10,'Bernardine','Houston','bernardine.houston@bikes.shop','(972) 530-5557',1,3,7);
+
+PRINT 'Staff data loaded'
 
 SET IDENTITY_INSERT sales.staffs OFF;
 
@@ -4379,6 +4393,8 @@ INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, requir
 
 SET IDENTITY_INSERT sales.orders OFF;
 
+PRINT 'Sales order data loaded'
+    
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1,1,20,1,599.99,0.2);
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1,2,8,2,1799.99,0.07);
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1,3,10,2,1549.00,0.05);
@@ -9101,3 +9117,6 @@ INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_pric
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1615,1,197,2,2299.99,0.2);
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1615,2,214,1,899.99,0.07);
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1615,3,182,1,2499.99,0.2);
+
+PRINT 'Sales order_items data loaded'
+SET NOCOUNT OFF;

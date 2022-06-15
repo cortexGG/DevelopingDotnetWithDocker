@@ -1,3 +1,4 @@
+-- noinspection SqlNoDataSourceInspectionForFile
 
 create database [bike-store-db]
 go
